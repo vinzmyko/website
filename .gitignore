@@ -1,0 +1,52 @@
+## Ignore build outputs
+bin/
+obj/
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+
+# Ignore user-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore VS Code workspace and settings
+.vscode/
+
+# Ignore Visual Studio Code specific files
+.history/
+.vscode/
+
+# Ignore Web files for Blazor (Client-side/Server-side)
+dist/
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# .NET Project Specific
+project.lock.json
+project.fragment.lock.json
+
+# Ignore environment-specific files (for appsettings)
+appsettings*.Development.json
+appsettings*.Local.json
+
+# Ignore Publish output
+publish/
+
+# Blazor specific files
+wwwroot/css/
+wwwroot/js/
+wwwroot/dist/
+
+# Optional: Ignore logs
+*.log
+
+# Tailwind CSS
+tailwindcss.exe
+node_modules/
+
+# Generated CSS (optional, if you want to regenerate it on each build)
+wwwroot/css/app.css
