@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="chevron_down" height="960" width="960" viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+  <g fill="currentColor">
+    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+  </g>
+</svg>
