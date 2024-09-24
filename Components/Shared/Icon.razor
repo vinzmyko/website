@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+
+@* REMEMBER to change the id inside the SVG file *@
+<svg class="@Class" width="@Width" height="@Height" viewBox="0 0 1024 1024">
+    <use href="Icons/@(FileName).svg#@(FileName)" />
+</svg>
+
+@code {
+    [Parameter]
+    public string FileName { get; set; } = "godot_mono_dark";
+
+    [Parameter]
+    public int Width { get; set; } = 100;
+
+    [Parameter]
+    public int Height { get; set; } = 100;
+
+    [Parameter]
+    public string Class { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> ClassChanged { get; set; }
+}
