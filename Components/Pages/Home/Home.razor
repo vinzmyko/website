@@ -1,0 +1,66 @@
+﻿@page "/"
+@using PersonalWebsite.Services
+@using PersonalWebsite.Models
+@using PersonalWebsite.Components
+@using PersonalWebsite.Components.Shared
+@inject IJSRuntime JSRuntime
+@implements IDisposable
+@rendermode InteractiveServer
+
+<PageTitle>Vinz Website</PageTitle>
+
+<PageNavigation CurrentSection="@currentSection" OnNavigate="NavigateTo" />
+
+<div id="intro" class="relative min-h-screen">
+    <IntroSection />
+    
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 @(IsChevronVisible ? "" : "hidden")">
+        <button @onclick="@(() => NavigateTo("projects"))">
+            <Icon Class="text-link hover:text-accent1 transition-colors duration-300" FileName="chevron_down" Width="80" Height="80" />
+        </button>
+    </div>
+</div>
+
+<div id="projects" class="min-h-screen">
+    <h2 class="text-4xl text-center py-20">Projects Section (Coming Soon)</h2>
+</div>
+
+@code {
+    private string currentSection = "intro";
+    private bool IsChevronVisible = true;
+    private DotNetObjectReference<Home>? objRef; protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            objRef = DotNetObjectReference.Create(this);
+            await JSRuntime.InvokeVoidAsync("initializeScrollSpy", objRef);
+        }
+    }
+    private async Task NavigateTo(string section)
+    {
+        await JSRuntime.InvokeVoidAsync("scrollToElement", section);
+        if (section == "projects")
+        {
+            IsChevronVisible = false;
+        }
+        await Task.Delay(500);
+        UpdateCurrentSection(section);
+    }
+
+    [JSInvokable]
+    public void UpdateCurrentSection(string section)
+    {
+        currentSection = section;
+        if (section == "projects")
+        {
+            IsChevronVisible = false;
+        }
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        objRef?.Dispose();
+        JSRuntime.InvokeVoidAsync("removeScrollSpy");
+    }
+}
