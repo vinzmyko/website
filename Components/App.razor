@@ -18,6 +18,12 @@
     <Routes />
     <script src="_framework/blazor.web.js"></script>
     <script>
+        window.resetAnimation = function(element) {
+            element.style.animation = 'none';
+            element.offsetHeight; // trigger reflow
+            element.style.animation = null; 
+        }
+
         let scrollSpy = null;
 
         function initializeScrollSpy(dotnetHelper) {
