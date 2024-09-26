@@ -1,0 +1,60 @@
+﻿@using PersonalWebsite.Components.Shared
+@using PersonalWebsite.Models
+
+<div class="bg-background overflow-hidden transition-all duration-300 group"
+     style="width: 450px; height: 300px;"
+     @onmouseover="OnMouseOver"
+     @onmouseout="OnMouseOut">
+    <div class="relative h-full w-full">
+        <img src="@currentImageSrc" alt="@Project.Name" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+        <div class="absolute inset-0 flex flex-col justify-between p-4">
+            <div>
+                <h3 class="font-secondary text-2xl text-text font-semibold mb-2 drop-shadow-md">@Project.Name</h3>
+                <div class="flex flex-wrap gap-2 mb-2">
+                    @foreach (var tech in Project.Technologies)
+                    {
+                        <Icon FileName="@tech.ToString().ToLower()" Width="28" Height="28" Class="text-accent1" />
+                    }
+                </div>
+                <div class="flex flex-wrap gap-2 mb-2">
+                    @foreach (var language in Project.ProgrammingLanguages)
+                    {
+                        <Icon FileName="@language.ToString().ToLower()" Width="32" Height="32" Class="text-link" />
+                    }
+                </div>
+            </div>
+            <div class="flex justify-between items-center">
+                <p class="font-accent text-s text-text drop-shadow">@GetDateInfo()</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public required Project Project { get; set; }
+
+    private string? currentImageSrc;
+
+    protected override void OnInitialized()
+    {
+        currentImageSrc = Project.GetProjectCardPNG();
+    }
+
+    private void OnMouseOver()
+    {
+        currentImageSrc = Project.GetProjectCardWebP();
+    }
+
+    private void OnMouseOut()
+    {
+        currentImageSrc = Project.GetProjectCardPNG();
+    }
+
+    private string GetDateInfo()
+    {
+        return Project.DateFinished.HasValue
+            ? $"Completed: {Project.DateFinished.Value.ToShortDateString()}"
+            : $"Started: {Project.DateStarted.ToShortDateString()}";
+    }
+}
