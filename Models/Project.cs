@@ -7,9 +7,31 @@ public class Project
     public DateTime? DateFinished { get; set; }
     public required PrimaryCategory PrimaryCategory { get; set; }
     public List<SecondaryCategory>? SecondaryCategories { get; set; }
+    public required List<ProgrammingLanguage> ProgrammingLanguages { get; set; }
     public required List<Technology> Technologies { get; set; }
     public required List<ProjectAttribute> Attributes { get; set; }
     public required ProjectScale? Scale { get; set; }
+
+    public string GetProjectCardPNG()
+    {
+        string name = Name.ToLower().Replace(" ", "");
+        return $"/Images/Projects/{Name.Replace(" ", "")}/{name}.png";
+    }
+
+    public string GetProjectCardWebP()
+    {
+        string name = Name.ToLower().Replace(" ", "");
+        return $"/Images/Projects/{Name.Replace(" ", "")}/{name}.webp";
+    }
+}
+
+public enum ProgrammingLanguage
+{
+    Csharp,
+    Cplusplus,
+    Python,
+    Gdscript,
+    Rust
 }
 
 public enum PrimaryCategory
@@ -39,10 +61,8 @@ public enum Technology
 {
     //Game Engine
     GDScript, Godot, Unity, UnrealEngine,
-    // Programming Languages
-    CSharp, Python, Rust, Javascript,
     // Frameworks
-    DotNet, React, Azure,
+    DotNet, Blazor, React, Azure, Aspnet,
     // SQL
     SqlServer, Sqlite, 
 }
