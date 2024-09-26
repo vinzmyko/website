@@ -16,7 +16,6 @@ public class UNLTeamJumpQuest : Project
         };
         Technologies = new List<Technology> 
         { 
-            Technology.CSharp,
             Technology.Godot
         };
         Attributes = new List<ProjectAttribute> 
@@ -25,5 +24,9 @@ public class UNLTeamJumpQuest : Project
             ProjectAttribute.ClientWork
         };
         Scale = ProjectScale.Published;
+        ProgrammingLanguages = new List<ProgrammingLanguage>
+        {
+            ProgrammingLanguage.Csharp
+        };
     }
 }
