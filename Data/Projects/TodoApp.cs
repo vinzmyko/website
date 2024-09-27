@@ -9,7 +9,7 @@ public class TodoApp : Project
         Name = "TodoApp";
         DateStarted = new DateTime(2024, 9, 11); 
         DateFinished = new DateTime(2024, 9, 22);
-        PrimaryCategory = PrimaryCategory.WebDevelopment;
+        PrimaryCategory = PrimaryCategory.Web;
         SecondaryCategories = new List<SecondaryCategory> 
         { 
             SecondaryCategory.FullStack,

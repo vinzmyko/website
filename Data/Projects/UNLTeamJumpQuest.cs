@@ -9,7 +9,7 @@ public class UNLTeamJumpQuest : Project
         Name = "UNL Team Jump Quest";
         DateStarted = new DateTime(2024, 8, 3); 
         DateFinished = new DateTime(2024, 8, 30);
-        PrimaryCategory = PrimaryCategory.GameDevelopment;
+        PrimaryCategory = PrimaryCategory.Game;
         SecondaryCategories = new List<SecondaryCategory> 
         { 
             SecondaryCategory.Godot,

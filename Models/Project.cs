@@ -11,6 +11,8 @@ public class Project
     public required List<Technology> Technologies { get; set; }
     public required List<ProjectAttribute> Attributes { get; set; }
     public required ProjectScale? Scale { get; set; }
+    public string? GitHubLink { get; set; }
+    public required string Description { get; set; }
 
     public string GetProjectCardPNG()
     {
@@ -36,13 +38,12 @@ public enum ProgrammingLanguage
 
 public enum PrimaryCategory
 {
-    WebDevelopment,
-    GameDevelopment,
-    MobileDevelopment,
-    DesktopApplications,
-    ToolsAndUtilities,
-    AiAndMachineLearning,
-    DataScienceAndAnalytics
+    Web,
+    Game,
+    Mobile,
+    Tools,
+    AI,
+    MachineLearning
 }
 
 public enum SecondaryCategory
