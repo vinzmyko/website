@@ -2,29 +2,45 @@
 
 <div class="fixed top-4 right-4 flex flex-col items-end space-y-4 z-50">
     <div class="flex items-center">
-        <span class="mr-2 text-sm font-accent text-link hover:text-accent1 transition-colors duration-300">Intro</span>
-        <button @onclick="@(() => OnNavigate.InvokeAsync("intro"))" class="w-6 h-6 flex items-center justify-center">
-            @if (CurrentSection == "intro")
-            {
-                <Icon Class="text-accent2" FileName="circle_full" Width="24" Height="24" />
-            }
-            else
-            {
-                <Icon Class="text-link hover:text-accent1 transition-colors duration-300" FileName="circle_empty" Width="24" Height="24" />
-            }
+        <button @onclick="@(() => OnNavigate.InvokeAsync("intro"))" 
+                class="flex items-center group @(CurrentSection == "intro" ? "pointer-events-none" : "")">
+            <span class="mr-2 text-sm font-accent @(CurrentSection == "intro" 
+                ? "text-accent2" 
+                : "text-link group-hover:text-accent1 transition-colors duration-300")">
+                Intro
+            </span>
+            <div class="w-6 h-6 flex items-center justify-center">
+                @if (CurrentSection == "intro")
+                {
+                    <Icon Class="text-accent2" FileName="circle_full" Width="24" Height="24" />
+                }
+                else
+                {
+                    <Icon Class="text-link group-hover:text-accent1 transition-colors duration-300" 
+                          FileName="circle_empty" Width="24" Height="24" />
+                }
+            </div>
         </button>
     </div>
     <div class="flex items-center">
-        <span class="mr-2 text-sm font-accent text-link hover:text-accent1 transition-colors duration-300">Projects</span>
-        <button @onclick="@(() => OnNavigate.InvokeAsync("projects"))" class="w-6 h-6 flex items-center justify-center">
-            @if (CurrentSection == "projects")
-            {
-                <Icon Class="text-accent2" FileName="circle_full" Width="24" Height="24" />
-            }
-            else
-            {
-                <Icon Class="text-link hover:text-accent1 transition-colors duration-300" FileName="circle_empty" Width="24" Height="24" />
-            }
+        <button @onclick="@(() => OnNavigate.InvokeAsync("projects"))" 
+                class="flex items-center group @(CurrentSection == "projects" ? "pointer-events-none" : "")">
+            <span class="mr-2 text-sm font-accent @(CurrentSection == "projects" 
+                ? "text-accent2" 
+                : "text-link group-hover:text-accent1 transition-colors duration-300")">
+                Projects
+            </span>
+            <div class="w-6 h-6 flex items-center justify-center">
+                @if (CurrentSection == "projects")
+                {
+                    <Icon Class="text-accent2" FileName="circle_full" Width="24" Height="24" />
+                }
+                else
+                {
+                    <Icon Class="text-link group-hover:text-accent1 transition-colors duration-300" 
+                          FileName="circle_empty" Width="24" Height="24" />
+                }
+            </div>
         </button>
     </div>
 </div>
