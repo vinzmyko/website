@@ -1,8 +1,8 @@
 ﻿@page "/"
 @using PersonalWebsite.Services
 @using PersonalWebsite.Models
-@using PersonalWebsite.Components
 @using PersonalWebsite.Components.Shared
+@using Projects
 @inject IJSRuntime JSRuntime
 @implements IDisposable
 @rendermode InteractiveServer
@@ -21,13 +21,12 @@
     </div>
 </div>
 
-<div id="projects" class="min-h-screen">
-    <h2 class="text-4xl text-center py-20">Projects Section (Coming Soon)</h2>
-</div>
+<ProjectSection />
 
 @code {
     private string currentSection = "intro";
     private bool IsChevronVisible = true;
+
     private DotNetObjectReference<Home>? objRef; protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
