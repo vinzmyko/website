@@ -18,12 +18,14 @@
     <Routes />
     <script src="_framework/blazor.web.js"></script>
     <script>
+        // ProjectCard Hovering
         window.resetAnimation = function(element) {
             element.style.animation = 'none';
-            element.offsetHeight; // trigger reflow
+            element.offsetHeight; 
             element.style.animation = null; 
         }
 
+        // Homepage scrollspy
         let scrollSpy = null;
 
         function initializeScrollSpy(dotnetHelper) {
