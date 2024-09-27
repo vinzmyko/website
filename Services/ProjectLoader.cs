@@ -46,4 +46,23 @@ public static class ProjectLoader
             .Select(s => s!.Value)
             .Distinct();
     }
+
+    public static List<Project> GetFilteredProjects(PrimaryCategory? category = null, string sortOption = "Latest")
+    {
+        var projects = LoadProjects();
+
+        if (category.HasValue)
+        {
+            projects = projects.Where(p => p.PrimaryCategory == category.Value).ToList();
+        }
+
+        return sortOption switch
+        {
+            "Latest" => projects.OrderByDescending(p => p.DateStarted).ToList(),
+            "Oldest" => projects.OrderBy(p => p.DateStarted).ToList(),
+            "In Progress" => projects.Where(p => p.DateFinished == null).OrderByDescending(p => p.DateStarted).ToList(),
+            "Completed" => projects.Where(p => p.DateFinished != null).OrderByDescending(p => p.DateFinished ?? p.DateStarted).ToList(),
+            _ => projects
+        };
+    }
 }
