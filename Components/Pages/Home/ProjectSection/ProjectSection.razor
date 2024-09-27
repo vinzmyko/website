@@ -1,0 +1,63 @@
+﻿@using PersonalWebsite.Models
+@using PersonalWebsite.Services
+@namespace Projects
+
+<div id="projects" class="min-h-screen">
+    <div class="bg-background min-h-screen p-8">
+        <h1 class="font-secondary text-3xl text-text font-bold mb-6">Projects</h1>
+
+        <ProjectFilter 
+            SortOptions="@sortOptions"
+            AvailableTypes="@availableTypes"
+            OnSortChange="@HandleSortChange"
+            OnTypeChange="@HandleTypeChange" />
+
+        <ProjectList Projects="@filteredProjects" />
+    </div>
+</div>
+
+@code {
+    private List<Project> filteredProjects = new List<Project>();
+    private string currentSort = "Latest";
+    private PrimaryCategory? currentType = null;
+    private List<string> sortOptions = new List<string> { "Latest", "Oldest", "In Progress", "Completed" };
+    private List<PrimaryCategory> availableTypes = new List<PrimaryCategory>();
+    private bool shouldRerender = false;
+
+    protected override void OnInitialized()
+    {
+        availableTypes = ProjectLoader.GetAvailablePrimaryCategories().ToList();
+        UpdateFilteredProjects();
+    }
+
+    private void HandleSortChange(string sortOption)
+    {
+        currentSort = sortOption;
+        UpdateFilteredProjects();
+        shouldRerender = true;
+        StateHasChanged();
+    }
+
+    private void HandleTypeChange(PrimaryCategory? type)
+    {
+        currentType = type;
+        UpdateFilteredProjects();
+        shouldRerender = true;
+        StateHasChanged();
+    }
+
+    private void UpdateFilteredProjects()
+    {
+        filteredProjects = ProjectLoader.GetFilteredProjects(currentType, currentSort);
+    }
+
+    protected override bool ShouldRender()
+    {
+        if (shouldRerender)
+        {
+            shouldRerender = false;
+            return true;
+        }
+        return base.ShouldRender();
+    }
+}

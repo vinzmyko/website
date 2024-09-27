@@ -1,6 +1,8 @@
 ﻿@using PersonalWebsite.Components.Shared
 @using PersonalWebsite.Models
 
+@namespace Projects
+
 <div class="bg-background overflow-hidden transition-all duration-300 group"
      style="width: 450px; height: 300px;"
      @onmouseover="OnMouseOver"
@@ -37,6 +39,16 @@
     private string? currentImageSrc;
 
     protected override void OnInitialized()
+    {
+        UpdateImageSrc();
+    }
+
+    protected override void OnParametersSet()
+    {
+        UpdateImageSrc();
+    }
+
+    private void UpdateImageSrc()
     {
         currentImageSrc = Project.GetProjectCardPNG();
     }

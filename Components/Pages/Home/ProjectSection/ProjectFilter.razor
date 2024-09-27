@@ -1,0 +1,77 @@
+﻿@using PersonalWebsite.Models
+
+@namespace Projects
+
+<div class="flex space-x-4 mb-6">
+    <div class="relative">
+        <button @onclick="ToggleSortDropdown" class="bg-accent2 text-text font-semibold py-2 px-4 rounded inline-flex items-center">
+            Sort
+            <svg class="ml-2 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.414 8L10 11.586 13.586 8H6.414zm0 4L10 15.586 13.586 12H6.414z" />
+            </svg>
+        </button>
+        @if (isSortOpen)
+        {
+            <div class="absolute mt-1 bg-background rounded-md shadow-lg z-10" style="min-width: 150px;">
+                <ul class="py-1">
+                    @foreach (var option in SortOptions)
+                    {
+                        <li @onclick="() => HandleSortChange(option)" class="px-4 py-2 text-text hover:bg-accent1 hover:text-background cursor-pointer whitespace-nowrap">
+                            @option
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+
+    <div class="relative">
+        <button @onclick="ToggleTypeDropdown" class="bg-accent2 text-text font-semibold py-2 px-4 rounded inline-flex items-center">
+            Project Type
+            <svg class="ml-2 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.414 8L10 11.586 13.586 8H6.414zm0 4L10 15.586 13.586 12H6.414z" />
+            </svg>
+        </button>
+        @if (isTypeOpen)
+        {
+            <div class="absolute mt-1 w-full bg-background rounded-md shadow-lg z-10">
+                <ul class="py-1">
+                    <li @onclick="() => HandleTypeChange(null)" class="px-4 py-2 text-text hover:bg-accent1 hover:text-background cursor-pointer">
+                        All
+                    </li>
+                    @foreach (var option in AvailableTypes)
+                    {
+                        <li @onclick="() => HandleTypeChange(option)" class="px-4 py-2 text-text hover:bg-accent1 hover:text-background cursor-pointer">
+                            @option
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public List<string> SortOptions { get; set; } = new List<string>();
+    [Parameter] public List<PrimaryCategory> AvailableTypes { get; set; } = new List<PrimaryCategory>();
+    [Parameter] public EventCallback<string> OnSortChange { get; set; }
+    [Parameter] public EventCallback<PrimaryCategory?> OnTypeChange { get; set; }
+
+    private bool isSortOpen = false;
+    private bool isTypeOpen = false;
+
+    private void ToggleSortDropdown() => isSortOpen = !isSortOpen;
+    private void ToggleTypeDropdown() => isTypeOpen = !isTypeOpen;
+
+    private async Task HandleSortChange(string sortOption)
+    {
+        isSortOpen = false;
+        await OnSortChange.InvokeAsync(sortOption);
+    }
+
+    private async Task HandleTypeChange(PrimaryCategory? type)
+    {
+        isTypeOpen = false;
+        await OnTypeChange.InvokeAsync(type);
+    }
+}
