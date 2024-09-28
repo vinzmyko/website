@@ -13,6 +13,10 @@ public class Project
     public required ProjectScale? Scale { get; set; }
     public string? GitHubLink { get; set; }
     public required string Description { get; set; }
+    public string? WebsiteLink { get; set; }
+    public string? VideoDemo { get; set; } 
+    public string? PostMortemLink { get; set; }
+    public string? ImageFolder { get; set; }
 
     public string GetProjectCardPNG()
     {
@@ -33,7 +37,10 @@ public enum ProgrammingLanguage
     Cplusplus,
     Python,
     Gdscript,
-    Rust
+    Rust,
+    Html,
+    Css,
+    Javascript
 }
 
 public enum PrimaryCategory

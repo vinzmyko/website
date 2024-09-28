@@ -7,8 +7,11 @@ public class UNLTeamJumpQuest : Project
     public UNLTeamJumpQuest()
     {
         Name = "UNL Team Jump Quest";
+        Description = "Beginning as an experimental exploration of a livestreaming platform's API evolving to become" +
+        " a practical solution for a competitive gaming community. UNL Team Jump Quest allows for real-time audience" + 
+        " participation through chat commands, enhancing viewer experience during breaks between matches.";
         DateStarted = new DateTime(2024, 8, 3); 
-        DateFinished = new DateTime(2024, 8, 30);
+        DateFinished = new DateTime(2024, 8, 31);
         PrimaryCategory = PrimaryCategory.Game;
         SecondaryCategories = new List<SecondaryCategory> 
         { 
@@ -28,5 +31,7 @@ public class UNLTeamJumpQuest : Project
         {
             ProgrammingLanguage.Csharp
         };
+        VideoDemo = "https://www.youtube.com/watch?v=A2n6WIh7ekM";
+        GitHubLink = "https://github.com/vinzmyko/twitch-jump-quest";
     }
 }
