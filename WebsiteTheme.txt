@@ -34,6 +34,7 @@ Image/GIF: 70% of card height
 Project Name: font-secondary, text-xl, text-text, font-semibold
 Tech Stack: font-accent, text-sm, text-link
 Language Icons: text-accent2
+DateStarted/DateFinished: font-primary
 
 Project Modal:
 
