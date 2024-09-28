@@ -1,10 +1,12 @@
 ﻿@using PersonalWebsite.Components.Shared
+@using PersonalWebsite.Components.Modals
 @using PersonalWebsite.Models
 
 @namespace Projects
 
-<div class="bg-background overflow-hidden transition-all duration-300 group"
+<div class="bg-background overflow-hidden transition-all duration-300 group cursor-pointer"
      style="width: 450px; height: 300px;"
+     @onclick="OpenModal"
      @onmouseover="OnMouseOver"
      @onmouseout="OnMouseOut">
     <div class="relative h-full w-full">
@@ -32,11 +34,17 @@
     </div>
 </div>
 
+<ProjectModal 
+    IsVisible="@isModalOpen" 
+    IsVisibleChanged="@((bool visible) => isModalOpen = visible)"
+    Project="@Project" />
+
 @code {
     [Parameter]
     public required Project Project { get; set; }
 
     private string? currentImageSrc;
+    private bool isModalOpen = false;
 
     protected override void OnInitialized()
     {
@@ -68,5 +76,9 @@
         return Project.DateFinished.HasValue
             ? $"Completed: {Project.DateFinished.Value.ToShortDateString()}"
             : $"Started: {Project.DateStarted.ToShortDateString()}";
+    }
+    private void OpenModal()
+    {
+        isModalOpen = true;
     }
 }
