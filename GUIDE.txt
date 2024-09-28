@@ -1,0 +1,5 @@
+Data/Projects - When I want to add a new project I create a new file here
+Services/ProjectLoader.cs - Where I load all the project classes
+Components/Shared/Icon.razor - A svg component you can style with tailwindcss
+wwwroot/Icons/ - `.svg` file locations
+wwwroot/Images/Projects/ - Where the Project media files live
