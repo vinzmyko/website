@@ -1,5 +1,7 @@
 Services/ProjectLoader.cs - Where I load all the project classes
+    - After creating the constructor you need to add the project in `_ProjectList`
 Factories/ProjectFactory.cs - Create the projects here (Call it in ProjectLoader.cs after)
+    - You assign the images here
 Components/Shared/Icon.razor - A svg component you can style with tailwindcss
 wwwroot/Icons/ - `.svg` file locations
 wwwroot/Images/Projects/ - Where the Project media files live
