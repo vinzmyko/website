@@ -21,13 +21,13 @@ public class Project
     public string GetProjectCardPNG()
     {
         string name = Name.ToLower().Replace(" ", "");
-        return $"/Images/Projects/{Name.Replace(" ", "")}/{name}.png";
+        return $"Images/Projects/{Name.Replace(" ", "")}/{name}.png";
     }
 
     public string GetProjectCardWebP()
     {
         string name = Name.ToLower().Replace(" ", "");
-        return $"/Images/Projects/{Name.Replace(" ", "")}/{name}.webp";
+        return $"Images/Projects/{Name.Replace(" ", "")}/{name}.webp";
     }
 }
 
