@@ -49,12 +49,12 @@
             {
                 <p class="text-text mb-4">@Project.Description</p>
 
-                @if (HasImageFolder() && projectImages.Any())
+                @if (HasImageFolder())
                 {
                     <div class="mb-4 relative">
                         <div class="relative h-64 bg-black/60">
-                            <img src="@projectImages[currentImageIndex]" alt="Project image" class="w-full h-full object-contain" />
-                            @if (projectImages.Count > 1)
+                            <img src="@Project!.Images![currentImageIndex]" alt="Project image" class="w-full h-full object-contain" />
+                            @if (Project.Images.Count > 1)
                             {
                                 <button @onclick="PreviousImage" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full">
                                     <Icon FileName="arrow_back" Width="24" Height="24" />
@@ -64,102 +64,102 @@
                                 </button>
                             }
                         </div>
-                        @if (projectImages.Count > 1)
+                        @if (Project.Images.Count > 1)
                         {
                             <div class="text-center mt-2">
-                                <span class="text-sm text-text">@(currentImageIndex + 1) / @projectImages.Count</span>
+                                <span class="text-sm text-text">@(currentImageIndex + 1) / @Project.Images.Count</span>
                             </div>
                         }
                     </div>
                 }
 
-            <div class="flex flex-wrap gap-4 mb-4">
-                <div class="flex items-center">
-                    <span class="font-accent text-sm text-link mr-2">Started:</span>
-                    <span class="text-text">@Project.DateStarted.ToShortDateString()</span>
-                </div>
-                @if (Project.DateFinished.HasValue)
-                {
+                <div class="flex flex-wrap gap-4 mb-4">
                     <div class="flex items-center">
-                        <span class="font-accent text-sm text-link mr-2">Finished:</span> <span class="text-text">@Project.DateFinished.Value.ToShortDateString()</span>
+                        <span class="font-accent text-sm text-link mr-2">Started:</span>
+                        <span class="text-text">@Project.DateStarted.ToShortDateString()</span>
                     </div>
-                }
-                else
-                {
-                    <div class="flex items-center">
-                        <span class="font-accent text-sm text-link mr-2">Status:</span>
-                        <span class="text-accent1">In Progress</span>
-                    </div>
-                }
-            </div>
+                    @if (Project.DateFinished.HasValue)
+                    {
+                        <div class="flex items-center">
+                            <span class="font-accent text-sm text-link mr-2">Finished:</span> <span class="text-text">@Project.DateFinished.Value.ToShortDateString()</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="flex items-center">
+                            <span class="font-accent text-sm text-link mr-2">Status:</span>
+                            <span class="text-accent1">In Progress</span>
+                        </div>
+                    }
+                </div>
 
-            <div class="flex flex-wrap gap-4 mb-4">
-                <div class="flex-1">
-                    <h3 class="font-secondary text-xl text-text font-semibold mb-2">Technologies</h3>
-                    <div class="flex flex-wrap gap-2">
-                        @foreach (var tech in Project.Technologies)
-                        {
-                            <span class="font-accent bg-accent1 text-text px-2 py-1 rounded text-sm">@tech</span>
-                        }
+                <div class="flex flex-wrap gap-4 mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-secondary text-xl text-text font-semibold mb-2">Technologies</h3>
+                        <div class="flex flex-wrap gap-2">
+                            @foreach (var tech in Project.Technologies)
+                            {
+                                <span class="font-accent bg-accent1 text-text px-2 py-1 rounded text-sm">@tech</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-secondary text-xl text-text font-semibold mb-2">Programming Languages</h3>
+                        <div class="flex flex-wrap gap-2">
+                            @foreach (var lang in Project.ProgrammingLanguages)
+                            {
+                                <span class="font-accent bg-link text-text px-2 py-1 rounded text-sm">@lang</span>
+                            }
+                        </div>
                     </div>
                 </div>
-                <div class="flex-1">
-                    <h3 class="font-secondary text-xl text-text font-semibold mb-2">Programming Languages</h3>
-                    <div class="flex flex-wrap gap-2">
-                        @foreach (var lang in Project.ProgrammingLanguages)
-                        {
-                            <span class="font-accent bg-link text-text px-2 py-1 rounded text-sm">@lang</span>
-                        }
-                    </div>
+
+                <div class="mb-4">
+                    @if (!string.IsNullOrEmpty(Project.WebsiteLink))
+                    {
+                        <div class="mb-2">
+                            <span class="text-xl font-secondary text-text font-semibold">Website: </span>
+                            <span class="inline-flex items-center group">
+                                <a href="@Project.WebsiteLink" target="_blank" rel="noopener noreferrer" 
+                                class="text-link group-hover:text-accent1 transition-colors duration-200">
+                                    @Project.WebsiteLink
+                                </a>
+                                <Icon FileName="link" Width="20" Height="20" Class="ml-1 text-link group-hover:text-accent1 transition-colors duration-200" />
+                            </span>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Project.GitHubLink))
+                    {
+                        <div class="mb-2">
+                            <span class="text-xl font-secondary text-text font-semibold">GitHub Repository: </span>
+                            <span class="inline-flex items-center group">
+                                <a href="@Project.GitHubLink" target="_blank" rel="noopener noreferrer" 
+                                class="text-link group-hover:text-accent1 transition-colors duration-200">
+                                    @Project.GitHubLink
+                                </a>
+                                <Icon FileName="link" Width="20" Height="20" Class="ml-1 text-link group-hover:text-accent1 transition-colors duration-200" />
+                            </span>
+                        </div>
+                    }
+
+                @if (HasPostMortem != null)
+                {
+                    @if (HasPostMortem.Result)
+                    {
+                        <div>
+                            <span class="text-xl font-secondary text-text font-semibold">Project Post-Mortem: </span>
+                            <span class="inline-flex items-center group">
+                                <a href="@GetPostMortemLink()" target="_blank" rel="noopener noreferrer" 
+                                class="text-link group-hover:text-accent1 transition-colors duration-200">
+                                    @(Path.GetFileName(GetPostMortemLink()))
+                                </a>
+                                <Icon FileName="link" Width="20" Height="20" Class="ml-1 text-link group-hover:text-accent1 transition-colors duration-200" />
+                            </span>
+                        </div>
+                    }
+                }
                 </div>
-            </div>
-
-            <div class="mb-4">
-                @if (!string.IsNullOrEmpty(Project.WebsiteLink))
-                {
-                    <div class="mb-2">
-                        <span class="text-xl font-secondary text-text font-semibold">Website: </span>
-                        <span class="inline-flex items-center group">
-                            <a href="@Project.WebsiteLink" target="_blank" rel="noopener noreferrer" 
-                            class="text-link group-hover:text-accent1 transition-colors duration-200">
-                                @Project.WebsiteLink
-                            </a>
-                            <Icon FileName="link" Width="20" Height="20" Class="ml-1 text-link group-hover:text-accent1 transition-colors duration-200" />
-                        </span>
-                    </div>
-                }
-
-                @if (!string.IsNullOrEmpty(Project.GitHubLink))
-                {
-                    <div class="mb-2">
-                        <span class="text-xl font-secondary text-text font-semibold">GitHub Repository: </span>
-                        <span class="inline-flex items-center group">
-                            <a href="@Project.GitHubLink" target="_blank" rel="noopener noreferrer" 
-                            class="text-link group-hover:text-accent1 transition-colors duration-200">
-                                @Project.GitHubLink
-                            </a>
-                            <Icon FileName="link" Width="20" Height="20" Class="ml-1 text-link group-hover:text-accent1 transition-colors duration-200" />
-                        </span>
-                    </div>
-                }
-
-            @if (HasPostMortem != null)
-            {
-                @if (HasPostMortem.Result)
-                {
-                    <div>
-                        <span class="text-xl font-secondary text-text font-semibold">Project Post-Mortem: </span>
-                        <span class="inline-flex items-center group">
-                            <a href="@GetPostMortemLink()" target="_blank" rel="noopener noreferrer" 
-                            class="text-link group-hover:text-accent1 transition-colors duration-200">
-                                @(Path.GetFileName(GetPostMortemLink()))
-                            </a>
-                            <Icon FileName="link" Width="20" Height="20" Class="ml-1 text-link group-hover:text-accent1 transition-colors duration-200" />
-                        </span>
-                    </div>
-                }
-            }
-            </div>
                 @if (!string.IsNullOrEmpty(Project.VideoDemo))
                 {
                     <div class="mb-4">
@@ -180,19 +180,8 @@
     [Parameter] public bool IsVisible { get; set; }
     [Parameter] public EventCallback<bool> IsVisibleChanged { get; set; }
     [Parameter] public Project? Project { get; set; }
-    private List<string> projectImages = new List<string>();
     private int currentImageIndex = 0;
     private Task<bool>? _hasPostMortemTask;
-
-    protected override void OnParametersSet()
-    {
-        base.OnParametersSet();
-        if (Project != null && HasImageFolder())
-        {
-            projectImages = GetProjectImages();
-            currentImageIndex = 0;
-        }
-    }
 
     private Task Close()
     {
@@ -267,54 +256,22 @@
 
     private bool HasImageFolder()
     {
-        if (Project == null)
-        {
-            return false;
-        }
-
-        string imgFolderPath = $"wwwroot/Images/Projects/{Project.Name.Replace(" ", "")}/img";
-        bool imgFolderExists = Directory.Exists(imgFolderPath);
-
-        if (imgFolderExists)
-        {
-            string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
-            string[] imageFiles = Directory.GetFiles(imgFolderPath)
-                .Where(file => imageExtensions.Contains(Path.GetExtension(file).ToLower()))
-                .ToArray();
-            return imageFiles.Length > 0;
-        }
-
-        return false;
-    }
-
-    private List<string> GetProjectImages()
-    {
-        if (Project == null)
-            return new List<string>();
-
-        string imgFolderPath = $"wwwroot/Images/Projects/{Project.Name.Replace(" ", "")}/img";
-        
-        if (!Directory.Exists(imgFolderPath))
-            return new List<string>();
-
-        string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
-        return Directory.GetFiles(imgFolderPath)
-                        .Where(file => imageExtensions.Contains(Path.GetExtension(file).ToLower()))
-                        .Select(file => $"/Images/Projects/{Project.Name.Replace(" ", "")}/img/{Path.GetFileName(file)}")
-                        .ToList();
+        return Project?.Images?.Any() == true;
     }
 
     private void PreviousImage()
     {
+        if (Project?.Images == null || !Project.Images.Any()) return;
         if (currentImageIndex > 0)
             currentImageIndex--;
         else
-            currentImageIndex = projectImages.Count - 1;
+            currentImageIndex = Project.Images.Count - 1;
     }
 
     private void NextImage()
     {
-        if (currentImageIndex < projectImages.Count - 1)
+        if (Project?.Images == null || !Project.Images.Any()) return;
+        if (currentImageIndex < Project.Images.Count - 1)
             currentImageIndex++;
         else
             currentImageIndex = 0;

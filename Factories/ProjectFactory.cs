@@ -9,8 +9,10 @@ public static class ProjectFactory
         return new Project
         {
             Name = "UNL Team Jump Quest",
-            Description = "Beginning as an experimental exploration of a livestreaming platform's API evolving to become a practical solution for a competitive gaming community. " +
-            "UNL Team Jump Quest allows for real-time audience participation through chat commands, enhancing viewer experience during breaks between matches.",
+            Description = "Commissioned by the owner of an online community, this project began as an experimental exploration of a livestreaming platform's API and evolved into an interactive " +
+            "solution for a community's needs. The software enhances viewer engagement during match breaks by enabling real-time audience participation through chat commands. As " +
+            "a custom-built tool for the client, it seamlessly integrates with their existing streaming setup, transforming downtime into an exciting, community-driven experience. This project " +
+            "showcases my ability to adapt to client needs, leverage third-party APIs, and deliver engaging, real-time interactive solutions in the gaming and livestreaming space.",
             DateStarted = new DateTime(2024, 8, 3),
             DateFinished = new DateTime(2024, 8, 31),
             PrimaryCategory = PrimaryCategory.Game,
@@ -29,8 +31,8 @@ public static class ProjectFactory
         return new Project
         {
             Name = "TodoApp",
-            Description = "Blazor Server, Engineered a full-stack Todo web app using Blazor frontend and ASP.NET backend with Minimal APIs to create a RESTful service, while Entity Framework " +
-            "Core manages data persistence with SQLite and deployed using Microsoft Azure.",
+            Description = "Developed a full-stack Todo web app using Blazor Server frontend. Integrated an ASP.NET backend with Minimal APIs to provide a RESTful service, using Entity" +
+            " Framework Core for efficient data management and persistence with SQLite. The application was deployed to Microsoft Azure.", 
             DateStarted = new DateTime(2024, 9, 11),
             DateFinished = new DateTime(2024, 9, 22),
             PrimaryCategory = PrimaryCategory.Web,
@@ -40,7 +42,8 @@ public static class ProjectFactory
             Scale = ProjectScale.ProofOfConcept,
             ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Csharp, ProgrammingLanguage.Html, ProgrammingLanguage.Css },
             GitHubLink = "https://github.com/vinzmyko/todo-app",
-            WebsiteLink = "https://vinz-todoapp-web.azurewebsites.net/"
+            WebsiteLink = "https://vinz-todoapp-web.azurewebsites.net/",
+            Images = new List<string> { "Images/Projects/TodoApp/img/TodoAppApiDbSchema.png" }
         };
     }
 
@@ -49,7 +52,8 @@ public static class ProjectFactory
         return new Project
         {
             Name = "Personal Website",
-            Description = "Made using Blazor WebAssembly (WASM).",
+            Description = "Crafted using Blazor WebAssembly (WASM). The site features a modern design with custom components for project displays, filtering, and modal views. Built " +
+            "with performance and scalability in mind, as it's very easy to create, remove, and update projects.",
             DateStarted = new DateTime(2024, 9, 23),
             DateFinished = new DateTime(2024, 9, 30),
             PrimaryCategory = PrimaryCategory.Web,

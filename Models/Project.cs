@@ -16,7 +16,7 @@ public class Project
     public string? WebsiteLink { get; set; }
     public string? VideoDemo { get; set; } 
     public string? PostMortemLink { get; set; }
-    public string? ImageFolder { get; set; }
+    public List<string>? Images { get; set; }
 
     public string GetProjectCardPNG()
     {
