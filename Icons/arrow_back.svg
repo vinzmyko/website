@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="arrow_back" height="960" width="960" viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+  <g fill="currentColor">
+    <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/>
+  </g>
+</svg>
