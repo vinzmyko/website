@@ -227,7 +227,7 @@
     {
         if (Project == null) return false;
         
-        string filePath = $"/Images/Projects/{Project.Name.Replace(" ", "")}/{Project.Name.Replace(" ", "")}.pdf";
+        string filePath = $"Images/Projects/{Project.Name.Replace(" ", "")}/{Project.Name.Replace(" ", "")}.pdf";
         Console.WriteLine($"Checking for post-mortem: {filePath}");
         
         try
@@ -249,7 +249,7 @@
     {
         if (Project == null) return string.Empty;
         
-        string link = $"/Images/Projects/{Project.Name.Replace(" ", "")}/{Project.Name.Replace(" ", "")}.pdf";
+        string link = $"Images/Projects/{Project.Name.Replace(" ", "")}/{Project.Name.Replace(" ", "")}.pdf";
         Console.WriteLine($"Post-mortem link: {link}");
         return link;
     }
