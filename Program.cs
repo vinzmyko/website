@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using PersonalWebsite;
 using PersonalWebsite.Components;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
