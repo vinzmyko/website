@@ -1,4 +1,5 @@
 ﻿@using System.Text.RegularExpressions
+@inject HttpClient HttpClient
 
 <style>
     .modal-content {
@@ -142,7 +143,9 @@
                     </div>
                 }
 
-                @if (HasPostMortem())
+            @if (HasPostMortem != null)
+            {
+                @if (HasPostMortem.Result)
                 {
                     <div>
                         <span class="text-xl font-secondary text-text font-semibold">Project Post-Mortem: </span>
@@ -155,6 +158,7 @@
                         </span>
                     </div>
                 }
+            }
             </div>
                 @if (!string.IsNullOrEmpty(Project.VideoDemo))
                 {
@@ -178,6 +182,7 @@
     [Parameter] public Project? Project { get; set; }
     private List<string> projectImages = new List<string>();
     private int currentImageIndex = 0;
+    private Task<bool>? _hasPostMortemTask;
 
     protected override void OnParametersSet()
     {
@@ -217,15 +222,47 @@
         return string.Empty;
     }
 
-    private bool HasPostMortem()
+    private Task<bool> HasPostMortem
     {
-        bool file = File.Exists($"wwwroot/Images/Projects/{Project?.Name.Replace(" ", "")}/{Project?.Name.ToLower().Replace(" ", "")}.pdf");
-        return file;
+        get
+        {
+            if (_hasPostMortemTask == null)
+            {
+                _hasPostMortemTask = CheckPostMortemExists();
+            }
+            return _hasPostMortemTask;
+        }
     }
+
+    private async Task<bool> CheckPostMortemExists()
+    {
+        if (Project == null) return false;
+        
+        string filePath = $"/Images/Projects/{Project.Name.Replace(" ", "")}/{Project.Name.Replace(" ", "")}.pdf";
+        Console.WriteLine($"Checking for post-mortem: {filePath}");
+        
+        try
+        {
+            var response = await HttpClient.GetAsync(filePath);
+            bool exists = response.IsSuccessStatusCode;
+            Console.WriteLine($"Post-mortem exists: {exists}");
+            return exists;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error checking for post-mortem: {ex.Message}");
+            return false;
+        }
+    }
+
 
     private string GetPostMortemLink()
     {
-        return $"/Images/Projects/{Project?.Name.Replace(" ", "")}/{Project?.Name.ToLower().Replace(" ", "")}.pdf";
+        if (Project == null) return string.Empty;
+        
+        string link = $"/Images/Projects/{Project.Name.Replace(" ", "")}/{Project.Name.Replace(" ", "")}.pdf";
+        Console.WriteLine($"Post-mortem link: {link}");
+        return link;
     }
 
     private bool HasImageFolder()

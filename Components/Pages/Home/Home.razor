@@ -2,14 +2,13 @@
 @using Projects
 @inject IJSRuntime JSRuntime
 @implements IDisposable
-@rendermode InteractiveServer
 
 <PageTitle>Vinz Website</PageTitle>
 
 <PageNavigation CurrentSection="@currentSection" OnNavigate="NavigateTo" />
 
 <div id="intro" class="relative min-h-screen">
-    <IntroSection />
+<IntroSection />
     
     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 @(IsChevronVisible ? "" : "hidden")">
         <button @onclick="@(() => NavigateTo("projects"))">
@@ -24,14 +23,17 @@
     private string currentSection = "intro";
     private bool IsChevronVisible = true;
 
-    private DotNetObjectReference<Home>? objRef; protected override async Task OnAfterRenderAsync(bool firstRender)
+    private DotNetObjectReference<Home>? objRef; 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             objRef = DotNetObjectReference.Create(this);
             await JSRuntime.InvokeVoidAsync("initializeScrollSpy", objRef);
+            UpdateCurrentSection("intro"); // Set initial section
         }
     }
+
     private async Task NavigateTo(string section)
     {
         await JSRuntime.InvokeVoidAsync("scrollToElement", section);

@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Website</title>
     <base href="/" />
     <link rel="stylesheet" href="output.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,11 +12,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <HeadOutlet />
 </head>
 
 <body>
-    <Routes />
+    <div id="app">
+        <div class="flex flex-col items-center justify-center min-h-screen bg-background">
+            <svg class="loading-progress w-24 h-24 animate-spin" viewBox="0 0 100 100">
+                <circle class="text-link" cx="50" cy="50" r="40" stroke="currentColor" stroke-width="8" fill="none" />
+                <circle class="text-accent1" cx="50" cy="50" r="40" stroke="currentColor" stroke-width="8" fill="none" stroke-dasharray="60 180" />
+            </svg>
+            <div class="loading-progress-text mt-4 font-secondary text-xl text-text">Loading...</div>
+        </div>
+    </div>
+
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="scripts/site.js"></script>
 </body>

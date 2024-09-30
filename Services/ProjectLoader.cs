@@ -1,5 +1,6 @@
-﻿using System.Reflection;
-using PersonalWebsite.Models;
+﻿using PersonalWebsite.Models;
+using PersonalWebsite.Data.Projects;
+using PersonalWebsite.Factories;
 
 namespace PersonalWebsite.Services;
 
@@ -14,16 +15,14 @@ public static class ProjectLoader
             return _ProjectsList;
         }
 
-        _ProjectsList = Assembly.GetExecutingAssembly() // Get's all the code in project
-            .GetTypes() // Find all the classes in project
-            .Where(t => t.IsSubclassOf(typeof(Project)) && !t.IsAbstract) // Only find classes 
-            // that are based around the 'Project' class and subclasses of it
-            .Select(t => Activator.CreateInstance(t) as Project) // For each class found, create an instance
-            // and treat is as a Project.
-            .Where(project => project != null) // Removes null instances of project
-            .Cast<Project>()
-            .OrderByDescending(p => p.DateStarted)
-            .ToList();
+        _ProjectsList = new List<Project>
+        {
+            ProjectFactory.CreateUNLTeamJumpQuest(),
+            ProjectFactory.CreateTodoApp(),
+            ProjectFactory.PersonalWebsite(),
+        }
+        .OrderByDescending(p => p.DateStarted)
+        .ToList();
 
         return _ProjectsList;
     }
