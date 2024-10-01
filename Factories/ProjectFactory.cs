@@ -31,8 +31,8 @@ public static class ProjectFactory
         return new Project
         {
             Name = "TodoApp",
-            Description = "Developed a full-stack Todo web app using Blazor Server frontend. Integrated an ASP.NET backend with Minimal APIs to provide a RESTful service, using Entity" +
-            " Framework Core for efficient data management and persistence with SQLite. The application was deployed to Microsoft Azure.", 
+            Description = "Developed a full-stack Todo web app using Blazor Server frontend using the CSS framework TailwindCSS. A RESTful API using ASP.NET, Minimal API, and Entity" +
+            " Framework Core for efficient data management and persistence with SQLite. The web application was deployed to Microsoft Azure.", 
             DateStarted = new DateTime(2024, 9, 11),
             DateFinished = new DateTime(2024, 9, 22),
             PrimaryCategory = PrimaryCategory.Web,
@@ -52,7 +52,7 @@ public static class ProjectFactory
         return new Project
         {
             Name = "Personal Website",
-            Description = "Crafted using Blazor WebAssembly (WASM). The site features a modern design with custom components for project displays, filtering, and modal views. Built " +
+            Description = "Crafted using Blazor WebAssembly (WASM) and using the CSS framework TailwindCSS. The site features a modern design with custom components for project displays, filtering, and modal views. Built " +
             "with performance and scalability in mind, as it's very easy to create, remove, and update projects.",
             DateStarted = new DateTime(2024, 9, 23),
             DateFinished = new DateTime(2024, 9, 30),
