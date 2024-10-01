@@ -228,18 +228,15 @@
         if (Project == null) return false;
         
         string filePath = $"Images/Projects/{Project.Name.Replace(" ", "")}/{Project.Name.Replace(" ", "").ToLower()}.pdf";
-        Console.WriteLine($"Checking for {Project.Name} post-mortem: {filePath}");
         
         try
         {
             var response = await HttpClient.GetAsync(filePath);
             bool exists = response.IsSuccessStatusCode;
-            Console.WriteLine($"{Project.Name} Post-mortem exists: {exists}");
             return exists;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error checking for post-mortem: {ex.Message}");
             return false;
         }
     }
@@ -250,7 +247,6 @@
         if (Project == null) return string.Empty;
         
         string link = $"Images/Projects/{Project.Name.Replace(" ", "")}/{Project.Name.Replace(" ", "").ToLower()}.pdf";
-        Console.WriteLine($"Post-mortem link: {link}");
         return link;
     }
 
