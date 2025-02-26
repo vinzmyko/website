@@ -4,6 +4,25 @@ namespace PersonalWebsite.Factories;
 
 public static class ProjectFactory
 {
+    public static Project CreatePMDScraper()
+    {
+        return new Project
+        {
+            Name = "Pokemon Mystery Dungeon Scraper",
+            Description = "An in-progress ROM scraper designed for the second generation of Pokemon Mystery Dungeon games, specifically designed as a CLI tool to extract data assets such as " +
+            "Pokemon sprite portraits, Pokemon sprite animations, Pokemon move effect animations, game data, and music.",
+            DateStarted = new DateTime(2025, 1, 10),
+            PrimaryCategory = PrimaryCategory.Tool,
+            SecondaryCategories = new List<SecondaryCategory> { SecondaryCategory.CLI, SecondaryCategory.Scraper },
+            Technologies = new List<Technology> { Technology.NA },
+            Attributes = new List<ProjectAttribute> { ProjectAttribute.SoloProject },
+            Scale = ProjectScale.ProofOfConcept,
+            ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Rust },
+            GitHubLink = "https://github.com/vinzmyko/pmd_scraper",
+            Images = new List<string> { "Images/Projects/TodoApp/img/TodoAppApiDbSchema.png" }
+        };
+    }
+
     public static Project CreateUNLTeamJumpQuest()
     {
         return new Project

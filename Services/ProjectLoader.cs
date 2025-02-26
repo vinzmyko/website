@@ -17,6 +17,7 @@ public static class ProjectLoader
 
         _ProjectsList = new List<Project>
         {
+            ProjectFactory.CreatePMDScraper(),
             ProjectFactory.CreateUNLTeamJumpQuest(),
             ProjectFactory.CreateTodoApp(),
             ProjectFactory.PersonalWebsite(),
