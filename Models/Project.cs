@@ -48,7 +48,7 @@ public enum PrimaryCategory
     Web,
     Game,
     Mobile,
-    Tools,
+    Tool,
     AI,
     MachineLearning
 }
@@ -57,8 +57,11 @@ public enum SecondaryCategory
 {
     // Web Development
     Frontend, Backend, FullStack,
+    // Game Development
     Godot, Unity, UnrealEngine,
     Multiplayer, GameAi,
+    // CLI / Tools Development
+    CLI, Scraper,
     // Mobile Development
     Ios, Android, CrossPlatform,
     // AI/ML
@@ -73,6 +76,8 @@ public enum Technology
     DotNet, Blazor, React, Azure, Aspnet,
     // SQL
     SqlServer, Sqlite, 
+    // Unspecified
+    NA
 }
 
 public enum ProjectAttribute
