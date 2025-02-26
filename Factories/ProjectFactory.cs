@@ -10,7 +10,10 @@ public static class ProjectFactory
         {
             Name = "Pokemon Mystery Dungeon Scraper",
             Description = "An in-progress ROM scraper designed for the second generation of Pokemon Mystery Dungeon games, specifically designed as a CLI tool to extract data assets such as " +
-            "Pokemon sprite portraits, Pokemon sprite animations, Pokemon move effect animations, game data, and music.",
+            "Pokemon sprite portraits, Pokemon sprite animations, Pokemon move effect animations, game data, and music. I used Ghidra, the reverse engineering software, and leveraged technical " +
+            "documentation such as GBATEK for information about the DS ROM structure to access specific binary locations like the File Name Table and the File Allocation Table. " +
+            "After finding the specific archived files, all that's needed is to implement the specific decompressor found through reverse engineering or using documentation others have reverse-" +
+            "engineered.",
             DateStarted = new DateTime(2025, 1, 10),
             PrimaryCategory = PrimaryCategory.Tool,
             SecondaryCategories = new List<SecondaryCategory> { SecondaryCategory.CLI, SecondaryCategory.Scraper },
@@ -19,7 +22,7 @@ public static class ProjectFactory
             Scale = ProjectScale.ProofOfConcept,
             ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Rust },
             GitHubLink = "https://github.com/vinzmyko/pmd_scraper",
-            Images = new List<string> { "Images/Projects/TodoApp/img/TodoAppApiDbSchema.png" }
+            Images = new List<string> { "Images/Projects/PokemonMysteryDungeonScraper/img/PortraitImages.png" }
         };
     }
 
