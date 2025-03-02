@@ -8,7 +8,7 @@ public static class ProjectFactory
     {
         return new Project
         {
-            Name = "Pokemon Mystery Dungeon Scraper",
+            Name = "PMD Scraper",
             Description = "An in-progress ROM scraper designed for the second generation of Pokemon Mystery Dungeon games, specifically designed as a CLI tool to extract data assets such as " +
             "Pokemon sprite portraits, Pokemon sprite animations, Pokemon move effect animations, game data, and music. I used Ghidra, the reverse engineering software, and leveraged technical " +
             "documentation such as GBATEK for information about the DS ROM structure to access specific binary locations like the File Name Table and the File Allocation Table. " +
