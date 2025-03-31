@@ -22,7 +22,7 @@ public static class ProjectFactory
             Scale = ProjectScale.ProofOfConcept,
             ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Rust },
             GitHubLink = "https://github.com/vinzmyko/pmd_scraper",
-            Images = new List<string> { "Images/Projects/PokemonMysteryDungeonScraper/img/PortraitImages.png" }
+            Images = new List<string> { "Images/Projects/PMDScraper/img/PortraitImages.png" }
         };
     }
 
