@@ -114,6 +114,21 @@
                     </div>
                 </div>
 
+                @if (!string.IsNullOrEmpty(Project.ProjectManagementLink))
+                {
+                    <div class="mb-2">
+                        <span class="text-xl font-secondary text-text font-semibold">Project Management: </span>
+                        <span class="inline-flex items-center group">
+                            <a href="@Project.ProjectManagementLink" target="_blank" rel="noopener noreferrer"
+                                class="text-link group-hover:text-accent1 transition-colors duration-200">
+                                @Project.ProjectManagementLink
+                            </a>
+                            <Icon FileName="link" Width="20" Height="20"
+                                Class="ml-1 text-link group-hover:text-accent1 transition-colors duration-200" />
+                        </span>
+                    </div>
+                }
+
                 <div class="mb-4">
                     @if (!string.IsNullOrEmpty(Project.WebsiteLink))
                     {

@@ -17,6 +17,7 @@ public class Project
     public string? VideoDemo { get; set; } 
     public string? PostMortemLink { get; set; }
     public List<string>? Images { get; set; }
+    public string? ProjectManagementLink { get; set; }
 
     public string GetProjectCardPNG()
     {
