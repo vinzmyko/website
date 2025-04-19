@@ -9,11 +9,9 @@ public static class ProjectFactory
         return new Project
         {
             Name = "PMD Scraper",
-            Description = "An in-progress ROM scraper designed for the second generation of Pokemon Mystery Dungeon games, specifically designed as a CLI tool to extract data assets such as " +
-            "Pokemon sprite portraits, Pokemon sprite animations, Pokemon move effect animations, game data, and music. I used Ghidra, the reverse engineering software, and leveraged technical " +
-            "documentation such as GBATEK for information about the DS ROM structure to access specific binary locations like the File Name Table and the File Allocation Table. " +
-            "After finding the specific archived files, all that's needed is to implement the specific decompressor found through reverse engineering or using documentation others have reverse-" +
-            "engineered.",
+            Description = "An in-progress ROM scraper for the second generation of Pokemon Mystery Dungeon games on the Nintendo DS. The technical documentation I used were GBATEK, Project Pokemon" +
+            ", SkyTemple libraries and reverse engineering communities such as pret and SkyTemple. With information that was not recorded I would reverse engineer the game ROM with Ghidra and DeSmuME's" +
+            " memory viewer and assembly disassembler. Current features include: Pokemon animation sprites extraction, Pokemon portrait sprite extraction, and move_id to effect sprite mapper.",
             DateStarted = new DateTime(2025, 1, 10),
             PrimaryCategory = PrimaryCategory.Tool,
             SecondaryCategories = new List<SecondaryCategory> { SecondaryCategory.CLI, SecondaryCategory.Scraper },
@@ -22,7 +20,8 @@ public static class ProjectFactory
             Scale = ProjectScale.ProofOfConcept,
             ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Rust },
             GitHubLink = "https://github.com/vinzmyko/pmd_scraper",
-            Images = new List<string> { "Images/Projects/PMDScraper/img/PortraitImages.png" }
+            ProjectManagementLink = "https://trello.com/b/fXW8Jexp/pokemon-autobattler",
+            Images = new List<string> { "Images/Projects/PMDScraper/img/venusaur_sprite_atlas.png", "Images/Projects/PMDScraper/img/pokedex_portraits.png", "Images/Projects/PMDScraper/img/effects_json.png" },
         };
     }
 
