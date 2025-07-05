@@ -42,7 +42,8 @@ public enum ProgrammingLanguage
     Rust,
     Html,
     Css,
-    Javascript
+    Javascript,
+    Go,
 }
 
 public enum PrimaryCategory
@@ -52,7 +53,8 @@ public enum PrimaryCategory
     Mobile,
     Tool,
     AI,
-    MachineLearning
+    MachineLearning,
+    API,
 }
 
 public enum SecondaryCategory
@@ -75,9 +77,9 @@ public enum Technology
     //Game Engine
     GDScript, Godot, Unity, UnrealEngine,
     // Frameworks
-    DotNet, Blazor, React, Azure, Aspnet,
-    // SQL
-    SqlServer, Sqlite, 
+    DotNet, Blazor, React, Azure, Aspnet, ActixWeb,
+    // Database
+    SqlServer, Sqlite, PostgreSQL, Redis,
     // Unspecified
     NA
 }
