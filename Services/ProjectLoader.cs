@@ -17,6 +17,7 @@ public static class ProjectLoader
 
         _ProjectsList = new List<Project>
         {
+            ProjectFactory.CreateNewsletterBackendAPI(),
             ProjectFactory.CreatePMDScraper(),
             ProjectFactory.CreateUNLTeamJumpQuest(),
             ProjectFactory.CreateTodoApp(),
@@ -47,13 +48,34 @@ public static class ProjectLoader
             .Distinct();
     }
 
+    public static List<string> GetFilterOptions()
+    {
+        var options = new List<string> { "Featured", "All" };
+        var categories = GetAvailablePrimaryCategories().Select(c => c.ToString()).ToList();
+        options.AddRange(categories);
+        return options;
+    }
+
     public static List<Project> GetFilteredProjects(PrimaryCategory? category = null, string sortOption = "Latest")
+    {
+        string? filterOption = category?.ToString();
+        return GetFilteredProjects(filterOption, sortOption);
+    }
+
+    public static List<Project> GetFilteredProjects(string? filterOption, string sortOption = "Latest")
     {
         var projects = LoadProjects();
 
-        if (category.HasValue)
+        if (!string.IsNullOrEmpty(filterOption))
         {
-            projects = projects.Where(p => p.PrimaryCategory == category.Value).ToList();
+            if (filterOption == "Featured")
+            {
+                projects = projects.Where(p => p.IsFeatured).ToList();
+            }
+            else if (filterOption != "All" && Enum.TryParse<PrimaryCategory>(filterOption, out var category))
+            {
+                projects = projects.Where(p => p.PrimaryCategory == category).ToList();
+            }
         }
 
         return sortOption switch

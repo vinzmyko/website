@@ -12,7 +12,7 @@
         <div class="mb-8">
             <ProjectFilter 
                 SortOptions="@sortOptions"
-                AvailableTypes="@availableTypes"
+                FilterOptions="@filterOptions"
                 OnSortChange="@HandleSortChange"
                 OnTypeChange="@HandleTypeChange" />
         </div>
@@ -24,14 +24,14 @@
 @code {
     private List<Project> filteredProjects = new List<Project>();
     private string currentSort = "Latest";
-    private PrimaryCategory? currentType = null;
+    private string currentType = "Featured";
     private List<string> sortOptions = new List<string> { "Latest", "Oldest", "In Progress", "Completed" };
-    private List<PrimaryCategory> availableTypes = new List<PrimaryCategory>();
+    private List<string> filterOptions = new List<string>();
     private bool shouldRerender = false;
 
     protected override void OnInitialized()
     {
-        availableTypes = ProjectLoader.GetAvailablePrimaryCategories().ToList();
+        filterOptions = ProjectLoader.GetFilterOptions();
         UpdateFilteredProjects();
     }
 
@@ -43,7 +43,7 @@
         StateHasChanged();
     }
 
-    private void HandleTypeChange(PrimaryCategory? type)
+    private void HandleTypeChange(string type)
     {
         currentType = type;
         UpdateFilteredProjects();

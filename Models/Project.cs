@@ -5,6 +5,7 @@ public class Project
     public required string Name { get; set; }
     public required DateTime DateStarted { get; set; }
     public DateTime? DateFinished { get; set; }
+    public bool IsFeatured { get; set; } = false;
     public required PrimaryCategory PrimaryCategory { get; set; }
     public List<SecondaryCategory>? SecondaryCategories { get; set; }
     public required List<ProgrammingLanguage> ProgrammingLanguages { get; set; }
