@@ -4,6 +4,26 @@ namespace PersonalWebsite.Factories;
 
 public static class ProjectFactory
 {
+    public static Project CreateNewsletterBackendAPI()
+    {
+        return new Project
+        {
+            Name = "Newsletter Backend",
+            Description = "A comprehensive email newsletter management system built with Rust, showcasing modern backend architecture and development practices. Built using Actix-Web for the REST API framework, PostgreSQL for data persistence, and Redis for session storage. Key technical implementations include Argon2 password hashing for security, idempotency patterns to prevent duplicate operations, role-based access control for admin functionality, and asynchronous email delivery queues integrated with SendGrid. The system features comprehensive error handling, session-based authentication with automatic renewal, and a background worker process for reliable email dispatch. Deployed using Docker containerisation with automated CI/CD pipelines via GitHub Actions on Railway.",
+            IsFeatured = true,
+            DateStarted = new DateTime(2025, 5, 12),
+            DateFinished = new DateTime(2025, 7, 3),
+            PrimaryCategory = PrimaryCategory.Web,
+            SecondaryCategories = new List<SecondaryCategory> { SecondaryCategory.Backend },
+            Technologies = new List<Technology> { Technology.ActixWeb, Technology.PostgreSQL, Technology.Redis },
+            Attributes = new List<ProjectAttribute> { ProjectAttribute.SoloProject },
+            Scale = ProjectScale.ProofOfConcept,
+            ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Rust },
+            GitHubLink = "https://github.com/vinzmyko/newsletter_backend",
+            VideoDemo = "https://youtu.be/6PrxWx8jTBM",
+        };
+    }
+
     public static Project CreatePMDScraper()
     {
         return new Project
@@ -12,6 +32,7 @@ public static class ProjectFactory
             Description = "An in-progress ROM scraper for the second generation of Pokemon Mystery Dungeon games on the Nintendo DS. The technical documentation I used were GBATEK, Project Pokemon" +
             ", SkyTemple libraries and reverse engineering communities such as pret and SkyTemple. With information that was not recorded I would reverse engineer the game ROM with Ghidra and DeSmuME's" +
             " memory viewer and assembly disassembler. Current features include: Pokemon animation sprites extraction, Pokemon portrait sprite extraction, and move_id to effect sprite mapper.",
+            IsFeatured = true,
             DateStarted = new DateTime(2025, 1, 10),
             PrimaryCategory = PrimaryCategory.Tool,
             SecondaryCategories = new List<SecondaryCategory> { SecondaryCategory.CLI, SecondaryCategory.Scraper },
@@ -34,6 +55,7 @@ public static class ProjectFactory
             "solution for a community's needs. The software enhances viewer engagement during match breaks by enabling real-time audience participation through chat commands. As " +
             "a custom-built tool for the client, it seamlessly integrates with their existing streaming setup, transforming downtime into an exciting, community-driven experience. This project " +
             "showcases my ability to adapt to client needs, leverage third-party APIs, and deliver engaging, real-time interactive solutions in the gaming and livestreaming space.",
+            IsFeatured = true,
             DateStarted = new DateTime(2024, 8, 3),
             DateFinished = new DateTime(2024, 8, 31),
             PrimaryCategory = PrimaryCategory.Game,
@@ -58,7 +80,7 @@ public static class ProjectFactory
             DateFinished = new DateTime(2024, 9, 22),
             PrimaryCategory = PrimaryCategory.Web,
             SecondaryCategories = new List<SecondaryCategory> { SecondaryCategory.FullStack },
-            Technologies = new List<Technology> { Technology.Blazor, Technology.Aspnet },
+            Technologies = new List<Technology> { Technology.Blazor, Technology.Aspnet, Technology.Sqlite },
             Attributes = new List<ProjectAttribute> { ProjectAttribute.SoloProject },
             Scale = ProjectScale.ProofOfConcept,
             ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Csharp, ProgrammingLanguage.Html, ProgrammingLanguage.Css },
