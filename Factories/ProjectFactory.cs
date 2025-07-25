@@ -4,6 +4,27 @@ namespace PersonalWebsite.Factories;
 
 public static class ProjectFactory
 {
+    public static Project CreateMdello()
+    {
+        return new Project
+        {
+            Name = "mdello",
+            Description = "mdello is a command-line tool that bridges the gap between Trello's web interface and developers' preferred markdown workflow. Users can edit their Trello boards using familiar markdown syntax, with boards represented as # headers, lists as ## subheaders, and cards as checkbox items that can be moved, labelled, and scheduled simply by reorganising the text. The tool supports advanced features like label management, due date formatting, and detailed editing modes for comprehensive board configuration. Built with Go, mdello enables developers to manage their project workflows entirely from the terminal using their favourite text editors.",
+            IsFeatured = true,
+            DateStarted = new DateTime(2025, 7, 9),
+            DateFinished = new DateTime(2025, 7, 25),
+            Technologies = new List<Technology> { Technology.NA },
+            PrimaryCategory = PrimaryCategory.Tool,
+            SecondaryCategories = new List<SecondaryCategory> { SecondaryCategory.CLI },
+            Attributes = new List<ProjectAttribute> { ProjectAttribute.SoloProject},
+            Scale = ProjectScale.Published,
+            ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Go },
+            GitHubLink = "https://github.com/vinzmyko/mdello",
+            VideoDemo = "https://www.youtube.com/watch?v=87xSqcBtu_c",
+            ProjectManagementLink = "https://github.com/vinzmyko/mdello/blob/main/project-management.md",
+        };
+    }
+
     public static Project CreateNewsletterBackendAPI()
     {
         return new Project
