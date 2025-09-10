@@ -63,7 +63,7 @@ public static class ProjectFactory
             ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Rust },
             GitHubLink = "https://github.com/vinzmyko/pmd_scraper",
             ProjectManagementLink = "https://trello.com/b/6BsD5Ijg/pokemon-auto-battler",
-            Images = new List<string> { "Images/Projects/PMDScraper/img/venusaur_sprite_atlas.png", "Images/Projects/PMDScraper/img/pokedex_portraits.png", "Images/Projects/PMDScraper/img/effects_json.png" },
+            Images = new List<string> { "Images/Projects/PMDScraper/img/venusaur_sprite_atlas.png", "Images/Projects/PMDScraper/img/pokedex_portraits.png", "Images/Projects/PMDScraper/img/effect_sprites.png", "Images/Projects/PMDScraper/img/effects_json.png" },
         };
     }
 
