@@ -4,6 +4,26 @@ namespace PersonalWebsite.Factories;
 
 public static class ProjectFactory
 {
+
+    public static Project CreatePokemonAutoBattler()
+    {
+        return new Project
+        {
+            Name = "Multiplayer Battle Server",
+            Description = "A real-time multiplayer game server and battle simulation engine built in Rust, creates asynchronous battles between connected clients via WebSockets. Uses Bevy ECS framework for it's modular and data driven design. Players interact with the world, position their units, and trigger real-time combat events. The server runs on Tokio for async I/O, supporting multiple concurrent sessions and maintaining synchronised game states across all connected clients.",
+            IsFeatured = true,
+            DateStarted = new DateTime(2025, 9, 24),
+            Technologies = new List<Technology> { Technology.BevyECS, Technology.Tokio },
+            PrimaryCategory = PrimaryCategory.Server,
+            SecondaryCategories = new List<SecondaryCategory> { SecondaryCategory.Backend, SecondaryCategory.Multiplayer },
+            Attributes = new List<ProjectAttribute> { ProjectAttribute.SoloProject},
+            Scale = ProjectScale.Published,
+            ProgrammingLanguages = new List<ProgrammingLanguage> { ProgrammingLanguage.Rust },
+            VideoDemo = "https://www.youtube.com/watch?v=5FGJuli8KSY",
+            ProjectManagementLink = "https://trello.com/b/6BsD5Ijg/pokemon-auto-battler",
+        };
+    }
+
     public static Project CreateMdello()
     {
         return new Project

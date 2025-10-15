@@ -17,6 +17,7 @@ public static class ProjectLoader
 
         _ProjectsList = new List<Project>
         {
+            ProjectFactory.CreatePokemonAutoBattler(),
             ProjectFactory.CreateMdello(),
             ProjectFactory.CreateNewsletterBackendAPI(),
             ProjectFactory.CreatePMDScraper(),
