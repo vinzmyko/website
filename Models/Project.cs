@@ -55,6 +55,7 @@ public enum PrimaryCategory
     AI,
     MachineLearning,
     API,
+    Server,
 }
 
 public enum SecondaryCategory
@@ -78,6 +79,8 @@ public enum Technology
     GDScript, Godot, Unity, UnrealEngine,
     // Frameworks
     DotNet, Blazor, React, Azure, Aspnet, ActixWeb,
+    // Rust Specific
+    BevyECS, Tokio,
     // Database
     SqlServer, Sqlite, PostgreSQL, Redis,
     // Unspecified
