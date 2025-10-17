@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "PersonalWebsite",
   "resources": {
-    "hash": "sha256-3CpDYW16pq1QEYMuMFKcp+ilS1+cW7OSXufVcd0I5RU=",
+    "hash": "sha256-4HtsF24eCSvZE3yikFipfDcxopZLd4VzR1UZD0HlPo4=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-D0bzod5lwwSzPR43JC8TTCcZKw+3jIHOk8CZFCRj5is="
     },
@@ -50,7 +50,7 @@
       "System.Text.RegularExpressions.wasm": "sha256-SW5L77HZP6F1seYrYKk/8bCw55JedaRD8wTtEYIeaPY=",
       "System.Web.HttpUtility.wasm": "sha256-eXbGXzp3uMlaVWbvtVq0omZgGdklhLLj88CjvzEg91g=",
       "System.Private.CoreLib.wasm": "sha256-VAYmq2QmjM2KrTo1DEmvVZGVn+bgle8UB5xBwRSXXEI=",
-      "PersonalWebsite.wasm": "sha256-ZLk3YmhENLouANQP/79Obs8M1NmMUoL1Mt09EVKbMac="
+      "PersonalWebsite.wasm": "sha256-xGYfZOSiyBYZe4K/zgR44/nq2MnNB1ryiDPvbhzx5cA="
     }
   },
   "cacheBootResources": true,
