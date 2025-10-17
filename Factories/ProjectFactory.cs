@@ -9,7 +9,7 @@ public static class ProjectFactory
     {
         return new Project
         {
-            Name = "Multiplayer Battle Server",
+            Name = "Multiplayer Game Server",
             Description = "A real-time multiplayer game server and battle simulation engine built in Rust, creates asynchronous battles between connected clients via WebSockets. Uses Bevy ECS framework for it's modular and data driven design. Players interact with the world, position their units, and trigger real-time combat events. The server runs on Tokio for async I/O, supporting multiple concurrent sessions and maintaining synchronised game states across all connected clients.",
             IsFeatured = true,
             DateStarted = new DateTime(2025, 9, 24),
